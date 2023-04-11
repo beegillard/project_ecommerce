@@ -1,0 +1,192 @@
+openapi: 3.0.1
+info:
+  title: Birdie Bars
+  description: API for ecommerce app
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /products:
+    summary: Access all products
+    get:
+      summary: Gets all products
+      description: ""
+      operationId: get_products
+      responses:
+        "200":
+          description: A list of products
+          content:
+            application/json:
+              examples:
+                products:
+                  value: "{\"products\":[{\"id\":\"001\",\"name\":\"barbar\",\"price\"\
+                    :\"$3.00\", \"description\": \"some words\"},{\"id\":\"002\",\"\
+                    name\":\"barbados\",\"price\":\"$4.00\", \"description\": \"more\
+                    \ words\"}]}"
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Default
+  /products/{productId}:
+    summary: Get product by id
+    get:
+      summary: Get product by product id
+      description: ""
+      operationId: get_product
+      parameters:
+      - name: productId
+        in: path
+        description: The id of the product.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Default
+  /orders/{custId}:
+    summary: Access all orders related to specific customer id
+    get:
+      summary: Get all orders related to customer id
+      description: ""
+      operationId: get_orders
+      parameters:
+      - name: custId
+        in: path
+        description: The orders of the customer with given id.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Default
+  /orders/{orderId}:
+    summary: Access a specific order by id
+    get:
+      summary: Get order by order id
+      description: ""
+      operationId: get_order
+      parameters:
+      - name: orderId
+        in: path
+        description: The orders of the customer with given id.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Default
+    delete:
+      summary: Deletes order by id
+      description: ""
+      operationId: delete_order
+      parameters:
+      - name: orderId
+        in: path
+        description: The id of the order to be deleted.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Default
+  /orders:
+    summary: Creates a new order
+    post:
+      summary: Creates a new order
+      description: ""
+      operationId: post_order
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Default
+  /cart/{cartId}/items:
+    summary: Accesses items in cart
+    get:
+      summary: Gets all items in a specific cart by id
+      description: ""
+      operationId: get_cart
+      parameters:
+      - name: cartId
+        in: path
+        description: The id of cart to be accessed.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Default
+    put:
+      summary: Modifies items in the cart
+      description: ""
+      operationId: put_cart
+      parameters:
+      - name: cartId
+        in: path
+        description: The id of cart to be accessed.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Default
+  /cart/{cartId}/items/{itemId}:
+    summary: access individual item in a cart
+    delete:
+      summary: removes item from cart
+      description: ""
+      operationId: delete_cart_item
+      parameters:
+      - name: itemId
+        in: path
+        description: The id of item to be deleted.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      - name: cartId
+        in: path
+        description: The id of cart to be accessed.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Default
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+        customer_id:
+          type: string
+        total:
+          type: number
+        status:
+          type: string
+        created:
+          type: string
+        modified:
+          type: string
