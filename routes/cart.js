@@ -1,21 +1,11 @@
-/*
 const Router = require('express-promise-router');
-
-const db = require('../db');
+const carts = require('../models/cartModel');
 const router = new Router();
 
+//router.get('/', carts.getCartByCustId);
 
+router.get('/:id', carts.getCartById);
+  
 
-router.get('/:id', async (req, res) => {
-  const { id } = req.params
-  const { rows } = await db.query('SELECT * FROM users WHERE id = $1', [id])
-  res.send(rows[0])
-});
-
-
-
-
-
-module.exports = router;
-
-*/
+  
+  module.exports = router;

@@ -10,6 +10,6 @@ const customer = require('./customer');
 module.exports = (app) => {
   app.use('/products', products);
   //app.use('/orders', orders);
-  //app.use('/carts', cart);
+  app.use('/carts', cart);
   //app.use('/customers', customer);
 };

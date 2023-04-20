@@ -9,7 +9,7 @@ const getProducts = (req, res) => {
     })
 };
 
-const getProduct = (req, res) => {
+const getProductById = (req, res) => {
 
  db.query("SELECT * FROM products WHERE id = $1", [req.params.id], (error, result) => {
         if (error) {
@@ -21,5 +21,5 @@ const getProduct = (req, res) => {
 
 module.exports = {
     getProducts,
-    getProduct
+    getProductById
 };

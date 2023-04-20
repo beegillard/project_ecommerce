@@ -4,7 +4,7 @@ const router = new Router();
 
 router.get('/', products.getProducts);
 
-router.get('/:id', products.getProduct);
+router.get('/:id', products.getProductById);
   
 
   
