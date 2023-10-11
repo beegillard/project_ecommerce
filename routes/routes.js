@@ -1,7 +1,7 @@
 
 const products = require('./product');
-const orders = require('./order');
-const cart = require('./cart');
+//const orders = require('./order');
+//const cart = require('./cart');
 const customer = require('./customer');
 
 
@@ -10,6 +10,6 @@ const customer = require('./customer');
 module.exports = (app) => {
   app.use('/products', products);
   //app.use('/orders', orders);
-  app.use('/carts', cart);
-  //app.use('/customers', customer);
+  //app.use('/carts', cart);
+  app.use('/customers', customer);
 };

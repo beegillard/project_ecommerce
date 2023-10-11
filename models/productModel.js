@@ -1,7 +1,7 @@
-const db = require('../db/index');
+const db = require('../db');
 
 const getProducts = (req, res) => {
-     db.query("SELECT * FROM products", (error, result) => {
+      db.query("SELECT * FROM products", (error, result) => {
         if (error) {
             throw error;
         }
@@ -11,13 +11,14 @@ const getProducts = (req, res) => {
 
 const getProductById = (req, res) => {
 
- db.query("SELECT * FROM products WHERE id = $1", [req.params.id], (error, result) => {
+  db.query("SELECT * FROM products WHERE id = $1", [req.params.id], (error, result) => {
         if (error) {
             throw error;
         }
         res.status(200).json(result.rows);
     })
 };
+
 
 module.exports = {
     getProducts,
